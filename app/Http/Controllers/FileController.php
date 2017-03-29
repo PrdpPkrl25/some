@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\File;
 use Illuminate\Http\Request;
 
-class FilesController extends Controller
+class FileController extends Controller
 {
     public function index()
     {

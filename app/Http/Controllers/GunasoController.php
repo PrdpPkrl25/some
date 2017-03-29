@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Gunaso;
 
@@ -14,7 +15,7 @@ class GunasoController extends Controller
         return view('gunaso',compact('gunasos','users'));
     }
 
-    public function store(request $request)
+    public function store(Request $request)
     {
         $attr=
             [
@@ -44,7 +45,7 @@ class GunasoController extends Controller
         $users=User::orderBy('id','asc')->get();
         return view('gunaso.gunaso_edit', compact('gunasoDetail', 'gunasos','users'));
     }
-    public function gunaso_editpost(request $request,$id)
+    public function gunaso_editpost(Request $request,$id)
     {
         $attr=
             [

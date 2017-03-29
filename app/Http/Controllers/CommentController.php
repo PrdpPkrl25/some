@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\File;
 use App\Gunaso;
+use App\Info;
 use App\User;
 use Illuminate\Http\Request;
 

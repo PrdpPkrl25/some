@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Authority;
-use App\FollowUps;
+use App\Follow_up;
 use Illuminate\Http\Request;
 
-class Follow_upsController extends Controller
+class Follow_upController extends Controller
 {
     public function index()
     {
-        $followups=FollowUps::orderby('id','asc')->with('follow_ups')->get();
+        $followups=Follow_up::orderby('id','asc')->with('follow_ups')->get();
         $authorities=Authority::orderBy('id','asc')->get();
         return view('followup',compact('authorities','followups'));
     }
@@ -24,20 +24,20 @@ class Follow_upsController extends Controller
 
 
             ];
-        $result=FollowUps::create($attr);
+        $result=Follow_up::create($attr);
         return redirect('/followup');
     }
     public function followup_view($id)
     {
-        $followupDetail = FollowUps::findOrfail($id);
-        $followups=FollowUps::orderby('id','asc')->with('follow_ups')->get();
+        $followupDetail = Follow_up::findOrfail($id);
+        $followups=Follow_up::orderby('id','asc')->with('follow_ups')->get();
         $authorities=Authority::orderBy('id','asc')->get();
         return view('followup.followup_view',compact('authorities','followups','followupDetail'));
     }
     public function followup_edit($id)
     {
-        $followupDetail = FollowUps::findOrfail($id);
-        $followups = FollowUps::orderby('id', 'asc')->with('follow_ups')->get();
+        $followupDetail = Follow_up::findOrfail($id);
+        $followups = Follow_up::orderby('id', 'asc')->with('follow_ups')->get();
         $authorities = Authority::orderBy('id', 'asc')->get();
         return view('followup.followup_edit', compact('authorities', 'followups', 'followupDetail'));
     }
@@ -49,7 +49,7 @@ class Follow_upsController extends Controller
                 'gunaso_date'=>$request->gunaso_date,
 
             ];
-        $result=FollowUps::where('id',$id)->update($attr);
+        $result=Follow_up::where('id',$id)->update($attr);
         return redirect('/followup_view'.$id);
     }
 }

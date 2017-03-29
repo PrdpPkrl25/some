@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Gunaso;
-use App\Tags;
+use App\Tag;
 use Illuminate\Http\Request;
-use phpDocumentor\Reflection\DocBlock\Tag;
 
-class TagsController extends Controller
+class TagController extends Controller
 {
     public function index()
     {
-        $tags=Tags::orderby('id','asc')->with('authority')->get();
+        $tags=Tag::orderby('id','asc')->with('tag')->get();
         $gunasos=Gunaso::orderBy('id','asc')->get();
         return view('authority',compact('tags','gunasos'));
     }
@@ -25,20 +24,20 @@ class TagsController extends Controller
 
 
             ];
-        $result=Tags::create($attr);
+        $result=Tag::create($attr);
         return redirect('/tag');
     }
     public function tag_view($id)
     {
-        $tagDetail = Tags::findOrfail($id);
-        $tags = Tags::orderby('id', 'asc')->with('tag')->get();
+        $tagDetail = Tag::findOrfail($id);
+        $tags = Tag::orderby('id', 'asc')->with('tag')->get();
         $gunasos = Gunaso::orderBy('id', 'asc')->get();
         return view('tag.tag_view', compact('tagDetail','tags','gunasos'));
     }
     public function tag_edit($id)
     {
-        $tagDetail = Tags::findOrfail($id);
-        $tags = Tags::orderby('id', 'asc')->with('tag')->get();
+        $tagDetail = Tag::findOrfail($id);
+        $tags = Tag::orderby('id', 'asc')->with('tags')->get();
         $gunasos = Gunaso::orderBy('id', 'asc')->get();
         return view('tag.tag_edit', compact('tagDetail','tags','gunasos'));
     }

@@ -1,6 +1,8 @@
-<html>
+@extends('layout')
+@section('content')
+
 <body>
-<table>
+<table class="table table-condensed table-responsive table-striped text-center table-bordered table-hover">
     <thead>
         <tr>
             <th>S.No</th>
@@ -46,5 +48,4 @@
             @endforeach
     </tbody>
 </table>
-</body>
-</html>
+@endsection

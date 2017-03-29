@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users=User::orderby('id','asc')->with('user')->get();
+        $users=User::orderby('id','asc')->with('users')->get();
         return view('user',['users'=>$users]);
     }
 

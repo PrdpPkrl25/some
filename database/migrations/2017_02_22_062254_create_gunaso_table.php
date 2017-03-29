@@ -16,7 +16,7 @@ class CreateGunasoTable extends Migration
         Schema::create('gunaso', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('first_name',100);
             $table->string('last_name',100);
             $table->string('topic',100);

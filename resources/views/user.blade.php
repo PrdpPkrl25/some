@@ -1,5 +1,5 @@
-<html>
-<body>
+@include('layout')
+@section('content')
 <table>
     <thead>
     <tr>
@@ -69,5 +69,4 @@
     @endforeach
     </tbody>
 </table>
-</body>
-</html>
+@endsection
